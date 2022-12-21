@@ -10,14 +10,8 @@ function App() {
     const [ids, setIds] = useState()
 
     const handleChange = (e) => {
-        // checks if e.target.id is equal to the checked
-            // const checkedTodos = checked.map((check, index) => {
-            //     index === e ? !check : check
-            // })
-            // setChecked(checkedTodos)
             setIds(e)
-            setChecked(!checked)
-            
+            setChecked(!checked)    
     }
 
     const handleClick = (e) => {
@@ -27,11 +21,11 @@ function App() {
 
     return <div className="App">
         <h1>Todos</h1>
-        <TodoForm saveTodo={(todoText) => {
+        <TodoForm saveTodo={(todoText, id) => {
             const trimmedText = todoText.trim()
 
             if(trimmedText.length > 0){
-                addTodo(trimmedText)
+                addTodo(trimmedText, id)
             }
         }}/>
         <ToDoList todos={todos} deleteTodo={deleteTodo} todoComplete={handleChange} checked={checked}/>
